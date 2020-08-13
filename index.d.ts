@@ -28,6 +28,10 @@ declare module '@twotalltotems/react-native-otp-input' {
      */
     codeInputHighlightStyle?: TextStyle;
     /**
+     * Style of populated input fields
+     */
+    codeInputFilledStyle?: TextStyle;
+    /**
      * Callback function
      * Trigger when all fields of the OTP has been filled
      *
