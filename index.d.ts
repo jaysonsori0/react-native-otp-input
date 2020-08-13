@@ -90,6 +90,14 @@ declare module '@twotalltotems/react-native-otp-input' {
      * Keyboard appearance. The value can be 'default', 'dark' or 'light'.
      */
     keyboardAppearance?: 'default' | 'dark' | 'light';
+    /**
+     * Used for error trapping
+     */
+    hasError?: boolean;
+    /**
+     * Style of input fields when there is an error.
+     */
+    errorStyle?: TextStyle;
   }
 
   export interface OTPInputViewState {

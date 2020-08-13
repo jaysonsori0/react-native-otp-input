@@ -182,7 +182,7 @@ export default class OTPInputView extends Component<InputProps, OTPInputViewStat
     }
 
     renderOneInputField = (_: TextInput, index: number) => {
-        const { codeInputFilledStyle, codeInputFieldStyle, codeInputHighlightStyle, secureTextEntry, editable, keyboardType, selectionColor, keyboardAppearance } = this.props
+        const { codeInputFilledStyle, codeInputFieldStyle, codeInputHighlightStyle, secureTextEntry, editable, keyboardType, selectionColor, keyboardAppearance, hasError, errorStyle } = this.props
         const { defaultTextFieldStyle } = styles
         const { selectedIndex, digits } = this.state
         const { clearInputs, placeholderCharacter, placeholderTextColor } = this.props
@@ -192,7 +192,7 @@ export default class OTPInputView extends Component<InputProps, OTPInputViewStat
                 <TextInput
                     testID="textInput"
                     underlineColorAndroid='rgba(0,0,0,0)'
-                    style={selectedIndex === index ? [defaultTextFieldStyle, codeInputFieldStyle, codeInputHighlightStyle] : [defaultTextFieldStyle, codeInputFieldStyle, digits[index] !== undefined && digits[index] !== '' && codeInputFilledStyle]}
+                    style={selectedIndex === index ? [defaultTextFieldStyle, codeInputFieldStyle, codeInputHighlightStyle, hasError && errorStyle] : [defaultTextFieldStyle, codeInputFieldStyle, digits[index] !== undefined && digits[index] !== '' && codeInputFilledStyle, hasError && errorStyle]}
                     ref={ref => { this.fields[index] = ref }}
                     onChangeText={text => {
                         this.handleChangeText(index, text)
