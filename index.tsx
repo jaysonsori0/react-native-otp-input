@@ -195,10 +195,10 @@ export default class OTPInputView extends Component<InputProps, OTPInputViewStat
                     style={selectedIndex === index ? [defaultTextFieldStyle, codeInputFieldStyle, codeInputHighlightStyle, hasError && errorStyle] : [defaultTextFieldStyle, codeInputFieldStyle, digits[index] !== undefined && digits[index] !== '' && codeInputFilledStyle, hasError && errorStyle]}
                     ref={ref => { this.fields[index] = ref }}
                     onChangeText={text => {
-                        this.handleChangeText(index, text)
+                        if (!/\D/g.test(text)) this.handleChangeText(index, text);
                     }}
                     onKeyPress={({ nativeEvent: { key } }) => { this.handleKeyPressTextInput(index, key) }}
-                    value={ !clearInputs ? digits[index]: "" }
+                    value={!clearInputs && digits[index] !== undefined ? digits[index].replace(/\D/g, '') : ""}
                     keyboardAppearance={keyboardAppearance}
                     keyboardType={keyboardType}
                     textContentType={isAutoFillSupported ? "oneTimeCode" : "none"}
